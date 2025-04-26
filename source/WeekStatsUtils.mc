@@ -102,4 +102,32 @@ class WeekStatUtils {
 
     return stats;
   }
+
+  static function adjustActivityDistances(stats as {
+    :running as { :distance as Number },
+    :swimming as { :distance as Number },
+    :cycling as { :distance as Number }
+  }) as {
+    :running as { :distance as Number },
+    :swimming as { :distance as Number },
+    :cycling as { :distance as Number }
+  } {
+      var RUNNING_FACTOR = 1.0;  // No adjustment for running
+      var SWIMMING_FACTOR = 4.0;  // Swimming distance multiplied by 4
+      var CYCLING_FACTOR = 0.25;  // Cycling distance reduced to 1/4
+
+      var adjustedStats = {
+          :running => { 
+              :distance => (stats[:running][:distance] * RUNNING_FACTOR).toNumber()
+          },
+          :swimming => { 
+              :distance => (stats[:swimming][:distance] * SWIMMING_FACTOR).toNumber()
+          },
+          :cycling => { 
+              :distance => (stats[:cycling][:distance] * CYCLING_FACTOR).toNumber()
+          }
+      };
+
+      return adjustedStats;
+  }
 }

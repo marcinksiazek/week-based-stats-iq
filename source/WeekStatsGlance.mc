@@ -14,6 +14,7 @@ class WeekStatsGlance extends Ui.GlanceView {
       weekData[:startOfWeek],
       weekData[:endOfWeek]
     );
+    var adjustedDistances = WeekStatUtils.adjustActivityDistances(activityTotals);
 
     // Draw week number text
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
@@ -25,29 +26,39 @@ class WeekStatsGlance extends Ui.GlanceView {
       Gfx.TEXT_JUSTIFY_LEFT
     );
 
-    // Draw activity distance bars
-    var distanceBarWidth = (dc.getWidth() - 40) / 3;
+    // Calculate total adjusted distance for proportions
+    var totalAdjustedDistance = 
+        adjustedDistances[:running][:distance] + 
+        adjustedDistances[:swimming][:distance] + 
+        adjustedDistances[:cycling][:distance];
+    
+    // Calculate bar dimensions
+    var maxBarWidth = dc.getWidth() - 40;
     var distanceBarY = dc.getHeight() / 2 - 1;
     var distanceBarHeight = 3;
+    var spacing = 2;
 
+    // Calculate proportional widths
+    var runWidth = totalAdjustedDistance > 0 ? 
+        (maxBarWidth * adjustedDistances[:running][:distance] / totalAdjustedDistance).toNumber() : 0;
+    var swimWidth = totalAdjustedDistance > 0 ? 
+        (maxBarWidth * adjustedDistances[:swimming][:distance] / totalAdjustedDistance).toNumber() : 0;
+    var bikeWidth = totalAdjustedDistance > 0 ? 
+        (maxBarWidth * adjustedDistances[:cycling][:distance] / totalAdjustedDistance).toNumber() : 0;
+
+    // Draw activity distance bars
+    var xOffset = 10;
+    
     dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_RED);
-    dc.fillRectangle(10, distanceBarY, distanceBarWidth, distanceBarHeight);
+    dc.fillRectangle(xOffset, distanceBarY, runWidth, distanceBarHeight);
+    xOffset += runWidth + spacing;
 
     dc.setColor(Gfx.COLOR_BLUE, Gfx.COLOR_BLUE);
-    dc.fillRectangle(
-      10 + distanceBarWidth + 5,
-      distanceBarY,
-      distanceBarWidth,
-      distanceBarHeight
-    );
+    dc.fillRectangle(xOffset, distanceBarY, swimWidth, distanceBarHeight);
+    xOffset += swimWidth + spacing;
 
     dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_GREEN);
-    dc.fillRectangle(
-      10 + (distanceBarWidth + 5) * 2,
-      distanceBarY,
-      distanceBarWidth,
-      distanceBarHeight
-    );
+    dc.fillRectangle(xOffset, distanceBarY, bikeWidth, distanceBarHeight);
 
     // Draw combined activity distances
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
