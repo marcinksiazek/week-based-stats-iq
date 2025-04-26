@@ -93,6 +93,13 @@ class WeekStatUtils {
       sample = userActivityIterator.next();
     }
 
+    stats[:swimming][:distance] += DebugHelper.generateRandomSwimDistance();
+    stats[:swimming][:count] += DebugHelper.generateRandomSwimCount();
+    stats[:running][:distance] += DebugHelper.generateRandomRunDistance();
+    stats[:running][:count] += DebugHelper.generateRandomRunCount();
+    stats[:cycling][:distance] += DebugHelper.generateRandomBikeDistance();
+    stats[:cycling][:count] += DebugHelper.generateRandomBikeCount();
+
     return stats;
   }
 }
