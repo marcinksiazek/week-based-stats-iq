@@ -1,0 +1,14 @@
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Visual Studio Code
+.vscode/
+
+# Monkey C
+bin/
+

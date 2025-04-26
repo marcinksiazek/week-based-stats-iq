@@ -1,0 +1,33 @@
+<layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <label x="center" y="10" id="id_week_number" text="Week 13" font="Gfx.FONT_SMALL" color="Gfx.COLOR_PURPLE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+    <label x="center" y="55" id="id_week_date" text="21.04 - 27.04" font="Gfx.FONT_XTINY" color="Gfx.COLOR_LT_GRAY" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+    <label x="50" y="100" id="id_run_stats" text="Running" font="Gfx.FONT_TINY" color="Gfx.COLOR_RED" />
+    <label x="50" y="200" id="id_swim_stats" text="Swimming" font="Gfx.FONT_TINY" color="Gfx.COLOR_BLUE" />
+    <label x="50" y="300" id="id_bike_stats" text="Cycling" font="Gfx.FONT_TINY" color="Gfx.COLOR_GREEN" />
+</layout>
+
+<!-- Gfx.FONT_XTINY - 12 pixels
+Gfx.FONT_TINY - 16 pixels
+Gfx.FONT_SMALL - 24 pixels
+Gfx.FONT_MEDIUM - 32 pixels
+Gfx.FONT_LARGE - 40 pixels
+Gfx.FONT_NUMBER_MILD - 26 pixels
+Gfx.FONT_NUMBER_MEDIUM - 32 pixels
+Gfx.FONT_NUMBER_HOT - 48 pixels
+Gfx.FONT_NUMBER_THAI_HOT - 64 pixels -->
+
+<!-- Gfx.COLOR_BLACK
+Gfx.COLOR_BLUE
+Gfx.COLOR_DK_BLUE
+Gfx.COLOR_DK_GRAY
+Gfx.COLOR_DK_GREEN
+Gfx.COLOR_DK_RED
+Gfx.COLOR_GREEN
+Gfx.COLOR_LT_GRAY
+Gfx.COLOR_ORANGE
+Gfx.COLOR_PINK
+Gfx.COLOR_PURPLE
+Gfx.COLOR_RED
+Gfx.COLOR_TRANSPARENT
+Gfx.COLOR_WHITE
+Gfx.COLOR_YELLOW -->
