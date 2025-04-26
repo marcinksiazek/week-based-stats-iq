@@ -13,7 +13,12 @@ class WeekStatUtils {
   } {
     var now = Time.now();
     var today = Gregorian.info(now, Time.FORMAT_SHORT);
-    var dayOfWeek = today.day_of_week - 1; // 0 = Monday, 6 = Sunday
+    var dayOfWeek = today.day_of_week - 2;
+    if (dayOfWeek < 0) {
+      dayOfWeek = 6; // Adjust for Sunday start
+    }
+    // 0 = Monday, 6 = Sunday
+    
 
     var startOfYear = Gregorian.moment({
       :year => today.year,
